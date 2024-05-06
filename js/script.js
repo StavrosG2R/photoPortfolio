@@ -9,35 +9,23 @@ $(document).ready(function () {
 	}, 4500);
 
 	//Ajax Form Send START
-	// $("#contact-form").on("submit", function () {
-	// 	var th = $(this);
-	// 	$.ajax({
-	// 		type: "POST",
-	// 		url: "mail.php",
-	// 		data: th.serialize(),
-	// 		success: function () {
-	// 			th.trigger("reset");
-	// 			$(".input-field").removeClass("is-active");
-	// 			$.magnificPopup.open({
-	// 				items: {
-	// 					src: '<div class="form-alert"><p>Your application has been successfully sent. <br> Expect a call!</p></div>',
-	// 					type: "inline",
-	// 				},
-	// 			});
-	// 		},
-	// 		error: function () {
-	// 			th.trigger("reset");
-	// 			$(".input-field").removeClass("is-active");
-	// 			$.magnificPopup.open({
-	// 				items: {
-	// 					src: '<div class="form-alert"><p>An error occurred, please try again</p></div>',
-	// 					type: "inline",
-	// 				},
-	// 			});
-	// 		},
-	// 	});
-	// 	return false;
-	// });
+	const handleSubmit = (event) => {
+		event.preventDefault();
+
+		const myForm = event.target;
+		const formData = new FormData(myForm);
+
+		fetch("/", {
+			method: "POST",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: new URLSearchParams(formData).toString(),
+		})
+			.then(() => console.log("Form successfully submitted"))
+			.catch((error) => alert(error));
+	};
+
+	document.querySelector("form").addEventListener("submit", handleSubmit);
+
 	//Ajax Form Send END
 
 	// Banner START
