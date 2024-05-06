@@ -14,7 +14,7 @@ $(document).ready(function () {
 		event.preventDefault(); // Prevent the form from submitting normally
 		var th = $(this);
 
-		fetch("/", {
+		fetch("/contact", {
 			method: "POST",
 			headers: { "Content-Type": "application/x-www-form-urlencoded" },
 			body: new URLSearchParams(th.serialize()).toString(),
