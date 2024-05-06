@@ -48,59 +48,6 @@ $(document).ready(function () {
 		return false;
 	});
 
-	// $("#contact-form").on("submit", function () {
-	// 	var th = $(this);
-	// 	fetch("/", {
-	// 		type: "POST",
-	// 		// url: "/", // Submit the form to the main page
-	// 		data: th.serialize(),
-	// 		dataType: "application/x-www-form-urlencoded", // Set the data type to URL-encoded
-	// 		success: function () {
-	// 			th.trigger("reset");
-	// 			$(".input-field").removeClass("is-active");
-	// 			$.magnificPopup.open({
-	// 				items: {
-	// 					src: '<div class="form-alert"><p>Your application has been successfully sent. <br> Expect a call!</p></div>',
-	// 					type: "inline",
-	// 				},
-	// 			});
-	// 		},
-	// 		error: function () {
-	// 			th.trigger("reset");
-	// 			$(".input-field").removeClass("is-active");
-	// 			$.magnificPopup.open({
-	// 				items: {
-	// 					src: '<div class="form-alert"><p>An error occurred, please try again</p></div>',
-	// 					type: "inline",
-	// 				},
-	// 			});
-	// 		},
-	// 		// type: "POST",
-	// 		// url: "mail.php",
-	// 		// data: th.serialize(),
-	// 		// success: function () {
-	// 		// 	th.trigger("reset");
-	// 		// 	$(".input-field").removeClass("is-active");
-	// 		// 	$.magnificPopup.open({
-	// 		// 		items: {
-	// 		// 			src: '<div class="form-alert"><p>Your application has been successfully sent. <br> Expect a call!</p></div>',
-	// 		// 			type: "inline",
-	// 		// 		},
-	// 		// 	});
-	// 		// },
-	// 		// error: function () {
-	// 		// 	th.trigger("reset");
-	// 		// 	$(".input-field").removeClass("is-active");
-	// 		// 	$.magnificPopup.open({
-	// 		// 		items: {
-	// 		// 			src: '<div class="form-alert"><p>An error occurred, please try again</p></div>',
-	// 		// 			type: "inline",
-	// 		// 		},
-	// 		// 	});
-	// 		// },
-	// 	});
-	// 	return false;
-	// });
 	//Ajax Form Send END
 
 	// Banner START
@@ -260,4 +207,7 @@ $(document).ready(function () {
 		localStorage.setItem("boxColor", color);
 	});
 	// Settings END
+
+	// current year
+	document.getElementById("currentYear").textContent = new Date().getFullYear();
 });
