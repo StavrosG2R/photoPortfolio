@@ -14,7 +14,7 @@ $(document).ready(function () {
 		var th = $(this);
 		$.ajax({
 			type: "POST",
-			url: "./contact.html", // Submit the form to the main page
+			url: "/", // Submit the form to the main page
 			data: th.serialize(),
 			dataType: "application/x-www-form-urlencoded", // Set the data type to URL-encoded
 			success: function () {
