@@ -10,42 +10,42 @@ $(document).ready(function () {
 
 	//Ajax Form Send START
 
-	// $("#contact-form").on("submit", function (event) {
-	// 	event.preventDefault(); // Prevent the form from submitting normally
-	// 	var th = $(this);
+	$("#contact-form").on("submit", function (event) {
+		event.preventDefault(); // Prevent the form from submitting normally
+		var th = $(this);
 
-	// 	fetch("/contact", {
-	// 		method: "POST",
-	// 		headers: { "Content-Type": "application/x-www-form-urlencoded" },
-	// 		body: new URLSearchParams(th.serialize()).toString(),
-	// 	})
-	// 		.then(function (response) {
-	// 			if (response.ok) {
-	// 				th.trigger("reset");
-	// 				$(".input-field").removeClass("is-active");
-	// 				$.magnificPopup.open({
-	// 					items: {
-	// 						src: '<div class="form-alert"><p>Your application has been successfully sent. <br> Expect a call!</p></div>',
-	// 						type: "inline",
-	// 					},
-	// 				});
-	// 			} else {
-	// 				throw new Error("Network response was not ok");
-	// 			}
-	// 		})
-	// 		.catch(function () {
-	// 			th.trigger("reset");
-	// 			$(".input-field").removeClass("is-active");
-	// 			$.magnificPopup.open({
-	// 				items: {
-	// 					src: '<div class="form-alert"><p>An error occurred, please try again</p></div>',
-	// 					type: "inline",
-	// 				},
-	// 			});
-	// 		});
+		fetch("/", {
+			method: "POST",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: new URLSearchParams(th.serialize()).toString(),
+		})
+			.then(function (response) {
+				if (response.ok) {
+					th.trigger("reset");
+					$(".input-field").removeClass("is-active");
+					$.magnificPopup.open({
+						items: {
+							src: '<div class="form-alert"><p>Your application has been successfully sent. <br> Expect a call!</p></div>',
+							type: "inline",
+						},
+					});
+				} else {
+					throw new Error("Network response was not ok");
+				}
+			})
+			.catch(function () {
+				th.trigger("reset");
+				$(".input-field").removeClass("is-active");
+				$.magnificPopup.open({
+					items: {
+						src: '<div class="form-alert"><p>An error occurred, please try again</p></div>',
+						type: "inline",
+					},
+				});
+			});
 
-	// 	return false;
-	// });
+		return false;
+	});
 
 	// $("#contact-form").on("submit", function () {
 	// 	var th = $(this);
