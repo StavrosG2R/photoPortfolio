@@ -25,7 +25,7 @@ $(document).ready(function () {
 					$(".input-field").removeClass("is-active");
 					$.magnificPopup.open({
 						items: {
-							src: '<div class="form-alert"><p>Your application has been successfully sent. <br> Expect a call!</p></div>',
+							src: '<div class="form-alert"><p>Your email has been successfully sent. <br> Expect a response!</p></div>',
 							type: "inline",
 						},
 					});
@@ -33,7 +33,7 @@ $(document).ready(function () {
 					throw new Error("Network response was not ok");
 				}
 			})
-			.catch(function () {
+			.catch(function (error) {
 				th.trigger("reset");
 				$(".input-field").removeClass("is-active");
 				$.magnificPopup.open({
@@ -42,6 +42,7 @@ $(document).ready(function () {
 						type: "inline",
 					},
 				});
+				console.log(error);
 			});
 
 		return false;
