@@ -374,6 +374,102 @@
 			<!-- end home -->
 		</main>
 
+		<form
+			name="contact-form"
+			id="contact-form"
+			method="POST"
+			data-netlify="true"
+			style="display: none"
+		>
+			<!-- Hidden Required Fields -->
+			<input
+				type="hidden"
+				name="form-name"
+				value="contact-form"
+			/>
+			<!-- <input
+										type="hidden"
+										name="admin_email"
+										value="admin_email@gmail.com"
+									/>
+									<input
+										type="hidden"
+										name="email_from"
+										value="info@sitename.com"
+									/>
+									<input
+										type="hidden"
+										name="form_subject"
+										value="New letter from the site Stavros.Sdrs"
+									/> -->
+			<!-- END Hidden Required Fields -->
+
+			<div
+				class="input-field wow animate__fadeIn"
+				tabindex="1"
+				data-wow-delay="0.3s"
+			>
+				<input
+					name="Name"
+					type="text"
+					id="contact-name"
+					maxlength="50"
+					required
+				/>
+				<label for="contact-name">Name</label>
+			</div>
+
+			<div
+				class="input-field wow animate__fadeIn"
+				tabindex="1"
+				data-wow-delay="0.5s"
+			>
+				<input
+					name="Email"
+					type="text"
+					id="contact-email"
+					maxlength="50"
+				/>
+				<label for="contact-email">E-mail</label>
+			</div>
+
+			<div
+				class="input-field wow animate__fadeIn"
+				tabindex="1"
+				data-wow-delay="0.5s"
+			>
+				<input
+					name="Phone"
+					type="text"
+					id="contact-phone"
+					autocomplete="tel"
+					required
+				/>
+				<label for="contact-email">Phone</label>
+			</div>
+
+			<div
+				class="input-field wow animate__fadeIn"
+				tabindex="1"
+				data-wow-delay="0.7s"
+			>
+				<textarea
+					name="Message"
+					id="contact-message"
+					cols="30"
+					rows="7"
+				></textarea>
+				<label for="contact-message">Message</label>
+			</div>
+
+			<div
+				class="button-field wow animate__fadeInUp"
+				data-wow-delay="0.9s"
+			>
+				<button type="submit">Send</button>
+			</div>
+		</form>
+
 		<script src="js/jquery-3.7.0.min.js"></script>
 		<script src="js/swiper-bundle.min.js"></script>
 		<script src="js/wow.min.js"></script>
