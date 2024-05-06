@@ -10,24 +10,30 @@ $(document).ready(function () {
 
 	//Ajax Form Send START
 
-	$("#contact-form").on("submit", function () {
+	$("#contact-form").on("submit", function (event) {
+		event.preventDefault(); // Prevent the form from submitting normally
 		var th = $(this);
+
 		fetch("/", {
-			type: "POST",
-			// url: "/", // Submit the form to the main page
-			data: th.serialize(),
-			dataType: "application/x-www-form-urlencoded", // Set the data type to URL-encoded
-			success: function () {
-				th.trigger("reset");
-				$(".input-field").removeClass("is-active");
-				$.magnificPopup.open({
-					items: {
-						src: '<div class="form-alert"><p>Your application has been successfully sent. <br> Expect a call!</p></div>',
-						type: "inline",
-					},
-				});
-			},
-			error: function () {
+			method: "POST",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: new URLSearchParams(th.serialize()).toString(),
+		})
+			.then(function (response) {
+				if (response.ok) {
+					th.trigger("reset");
+					$(".input-field").removeClass("is-active");
+					$.magnificPopup.open({
+						items: {
+							src: '<div class="form-alert"><p>Your application has been successfully sent. <br> Expect a call!</p></div>',
+							type: "inline",
+						},
+					});
+				} else {
+					throw new Error("Network response was not ok");
+				}
+			})
+			.catch(function () {
 				th.trigger("reset");
 				$(".input-field").removeClass("is-active");
 				$.magnificPopup.open({
@@ -36,33 +42,64 @@ $(document).ready(function () {
 						type: "inline",
 					},
 				});
-			},
-			// type: "POST",
-			// url: "mail.php",
-			// data: th.serialize(),
-			// success: function () {
-			// 	th.trigger("reset");
-			// 	$(".input-field").removeClass("is-active");
-			// 	$.magnificPopup.open({
-			// 		items: {
-			// 			src: '<div class="form-alert"><p>Your application has been successfully sent. <br> Expect a call!</p></div>',
-			// 			type: "inline",
-			// 		},
-			// 	});
-			// },
-			// error: function () {
-			// 	th.trigger("reset");
-			// 	$(".input-field").removeClass("is-active");
-			// 	$.magnificPopup.open({
-			// 		items: {
-			// 			src: '<div class="form-alert"><p>An error occurred, please try again</p></div>',
-			// 			type: "inline",
-			// 		},
-			// 	});
-			// },
-		});
+			});
+
 		return false;
 	});
+
+	// $("#contact-form").on("submit", function () {
+	// 	var th = $(this);
+	// 	fetch("/", {
+	// 		type: "POST",
+	// 		// url: "/", // Submit the form to the main page
+	// 		data: th.serialize(),
+	// 		dataType: "application/x-www-form-urlencoded", // Set the data type to URL-encoded
+	// 		success: function () {
+	// 			th.trigger("reset");
+	// 			$(".input-field").removeClass("is-active");
+	// 			$.magnificPopup.open({
+	// 				items: {
+	// 					src: '<div class="form-alert"><p>Your application has been successfully sent. <br> Expect a call!</p></div>',
+	// 					type: "inline",
+	// 				},
+	// 			});
+	// 		},
+	// 		error: function () {
+	// 			th.trigger("reset");
+	// 			$(".input-field").removeClass("is-active");
+	// 			$.magnificPopup.open({
+	// 				items: {
+	// 					src: '<div class="form-alert"><p>An error occurred, please try again</p></div>',
+	// 					type: "inline",
+	// 				},
+	// 			});
+	// 		},
+	// 		// type: "POST",
+	// 		// url: "mail.php",
+	// 		// data: th.serialize(),
+	// 		// success: function () {
+	// 		// 	th.trigger("reset");
+	// 		// 	$(".input-field").removeClass("is-active");
+	// 		// 	$.magnificPopup.open({
+	// 		// 		items: {
+	// 		// 			src: '<div class="form-alert"><p>Your application has been successfully sent. <br> Expect a call!</p></div>',
+	// 		// 			type: "inline",
+	// 		// 		},
+	// 		// 	});
+	// 		// },
+	// 		// error: function () {
+	// 		// 	th.trigger("reset");
+	// 		// 	$(".input-field").removeClass("is-active");
+	// 		// 	$.magnificPopup.open({
+	// 		// 		items: {
+	// 		// 			src: '<div class="form-alert"><p>An error occurred, please try again</p></div>',
+	// 		// 			type: "inline",
+	// 		// 		},
+	// 		// 	});
+	// 		// },
+	// 	});
+	// 	return false;
+	// });
 	//Ajax Form Send END
 
 	// Banner START
